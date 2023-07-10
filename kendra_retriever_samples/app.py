@@ -6,6 +6,7 @@ import kendra_chat_anthropic as anthropic
 import kendra_chat_flan_xl as flanxl
 import kendra_chat_flan_xxl as flanxxl
 import kendra_chat_open_ai as openai
+import kendra_chat_rinna as rinna
 
 
 USER_ICON = "images/user-icon.png"
@@ -15,7 +16,8 @@ PROVIDER_MAP = {
     'openai': 'Open AI',
     'anthropic': 'Anthropic',
     'flanxl': 'Flan XL',
-    'flanxxl': 'Flan XXL'
+    'flanxxl': 'Flan XXL',
+    'rinna': 'Rinna',
 }
 
 # Check if the user ID is already stored in the session state
@@ -42,10 +44,13 @@ if 'llm_chain' not in st.session_state:
         elif (sys.argv[1] == 'openai'):
             st.session_state['llm_app'] = openai
             st.session_state['llm_chain'] = openai.build_chain()
+        elif (sys.argv[1] == 'rinna'):
+            st.session_state['llm_app'] = rinna
+            st.session_state['llm_chain'] = rinna.build_chain()
         else:
             raise Exception("Unsupported LLM: ", sys.argv[1])
     else:
-        raise Exception("Usage: streamlit run app.py <anthropic|flanxl|flanxxl|openai>")
+        raise Exception("Usage: streamlit run app.py <anthropic|flanxl|flanxxl|openai|rinna>")
 
 if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = []
@@ -103,7 +108,7 @@ def write_top_bar():
             provider = PROVIDER_MAP[selected_provider]
         else:
             provider = selected_provider.capitalize()
-        header = f"An AI App powered by Amazon Kendra and {provider}!"
+        header = f"生成系 AI アプリケーション powered by Amazon Kendra & {provider}!"
         st.write(f"<h3 class='main-header'>{header}</h3>", unsafe_allow_html=True)
     with col3:
         clear = st.button("Clear Chat")
@@ -196,4 +201,4 @@ with st.container():
     write_chat_message(a, q)
 
 st.markdown('---')
-input = st.text_input("You are talking to an AI, ask any question.", key="input", on_change=handle_input)
+input = st.text_input("質問を入力してください ✏️", key="input", on_change=handle_input)
