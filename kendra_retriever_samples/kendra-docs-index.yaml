@@ -115,7 +115,7 @@ Resources:
           Urls:
              SiteMapsConfiguration:
                SiteMaps:
-                 - 'https://docs.aws.amazon.com/ja_jp/wellarchitected/latest/reliability-pillar/sitemap.xml'
+                 - 'https://raw.githubusercontent.com/kmotohas/amazon-kendra-langchain-extensions/main/kendra_retriever_samples/sitemap.xml'
                  #- 'https://docs.aws.amazon.com/kendra/latest/dg/sitemap.xml'
                  #- 'https://docs.aws.amazon.com/sagemaker/latest/dg/sitemap.xml'
       IndexId: !GetAtt DocsKendraIndex.Id
