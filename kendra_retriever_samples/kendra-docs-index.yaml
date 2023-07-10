@@ -109,15 +109,15 @@ Resources:
       DataSourceConfiguration: 
         WebCrawlerConfiguration:
           UrlInclusionPatterns:
-            - '.*https://docs.aws.amazon.com/lex/.*'
-            - '.*https://docs.aws.amazon.com/kendra/.*'
-            - '.*https://docs.aws.amazon.com/sagemaker/.*'
+            - '.*https://docs.aws.amazon.com/ja_jp/wellarchitected/.*'
+            #- '.*https://docs.aws.amazon.com/kendra/.*'
+            #- '.*https://docs.aws.amazon.com/sagemaker/.*'
           Urls:
              SiteMapsConfiguration:
                SiteMaps:
-                 - 'https://docs.aws.amazon.com/lex/latest/dg/sitemap.xml'
-                 - 'https://docs.aws.amazon.com/kendra/latest/dg/sitemap.xml'
-                 - 'https://docs.aws.amazon.com/sagemaker/latest/dg/sitemap.xml'
+                 - 'https://docs.aws.amazon.com/ja_jp/wellarchitected/latest/reliability-pillar/sitemap.xml'
+                 #- 'https://docs.aws.amazon.com/kendra/latest/dg/sitemap.xml'
+                 #- 'https://docs.aws.amazon.com/sagemaker/latest/dg/sitemap.xml'
       IndexId: !GetAtt DocsKendraIndex.Id
       Name: 'KendraDocsDS'
       RoleArn: !GetAtt KendraDSRole.Arn
